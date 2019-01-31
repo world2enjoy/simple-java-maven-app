@@ -27,7 +27,8 @@ pipeline{
         
         stage('Deploy'){
             steps {
-                sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
+                bat("xcopy target/my-app-1.0-SNAPSHOT.jar 54.214.99.187//home//centos//simple-java-maven-app//target /O /X /E /H /K")
+                sh 'java -jar 54.214.99.187//home//centos//simple-java-maven-app//target//my-app-1.0-SNAPSHOT.jar'
             }
         }
     }    
