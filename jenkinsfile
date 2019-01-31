@@ -28,8 +28,10 @@ pipeline{
         stage('Deploy'){
             steps {
                 /*bat("xcopy target/my-app-1.0-SNAPSHOT.jar 54.214.99.187//home//centos//simple-java-maven-app//target /O /X /E /H /K")*/
-                sh "scp -v -o 'StrictHostKeyChecking=no' target/my-app-1.0-SNAPSHOT.jar centos@54.214.99.187://home//centos//simple-java-maven-app//target"
-                sh 'java -jar 54.214.99.187//home//centos//simple-java-maven-app//target//my-app-1.0-SNAPSHOT.jar'
+                /*sh "scp -v -o 'StrictHostKeyChecking=no' target/my-app-1.0-SNAPSHOT.jar centos@54.214.99.187://home//centos//simple-java-maven-app//target" */
+                sh "scp -o 'StrictHostKeyChecking=no' -i /tmp/my.pem target/my-app-1.0-SNAPSHOT.jar centos@54.214.99.187:/tmp/
+                sh "ssh -i //tmp//my.pem centos@54.214.99.187 java -jar //tmp//my-app-1.0-SNAPSHOT.jar"
+                /*sh 'java -jar 54.214.99.187//home//centos//simple-java-maven-app//target//my-app-1.0-SNAPSHOT.jar' */
             }
         }
     }    
