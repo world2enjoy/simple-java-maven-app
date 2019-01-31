@@ -28,7 +28,7 @@ pipeline{
         stage('Deploy'){
             steps {
                 /*bat("xcopy target/my-app-1.0-SNAPSHOT.jar 54.214.99.187//home//centos//simple-java-maven-app//target /O /X /E /H /K")*/
-                sh "scp -o 'StrictHostKeyChecking=no' target/my-app-1.0-SNAPSHOT.jar centos@54.187.221.6://home//centos//git-demo//simple-java-maven-app//target"
+                sh " sudo scp -o 'StrictHostKeyChecking=no' target/my-app-1.0-SNAPSHOT.jar centos@54.187.221.6://home//centos//git-demo//simple-java-maven-app//target"
                 sh 'java -jar 54.214.99.187//home//centos//simple-java-maven-app//target//my-app-1.0-SNAPSHOT.jar'
             }
         }
